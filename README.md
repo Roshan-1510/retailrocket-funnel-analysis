@@ -2,7 +2,7 @@
 
 ## Headline
 
-2.68% conversion rate from view to add to cart — high views with near-zero action points to a product-level problem scattered across 21 categories.
+"6,189 products across 21 categories are generating views with near-zero cart additions — traffic isn't the issue, the product page is."
 
 ---
 
