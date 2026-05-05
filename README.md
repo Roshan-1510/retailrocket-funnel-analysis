@@ -32,9 +32,10 @@ The investigation started by counting unique users at each funnel stage to locat
 
 ## Recommendations
 
-**Recommendation 1** (based on Finding 4): Conduct a metadata audit across the full 6,189 item shortlist to identify and fix missing product information that prevents users from making purchase decisions.
-
-**Recommendation 2** (based on Finding 3): Conduct a product page audit across the 6,189 high-view, near-zero addtocart items to identify and resolve barriers — starting with items that have zero addtocarts despite 1,000+ views.
+**Recommendation 1** — Fix metadata gaps first (based on Finding 4)
+9 items in the top-50 highest-view list have no metadata — no category, no attributes, no product information. These items average 466 views each but convert at zero. Conduct a metadata audit across the full 6,189 item shortlist, prioritizing these 9 items first. Fixing them alone could recover an estimated 112 additional cart additions at the current 2.68% baseline.
+**Recommendation 2** — Audit high-view, zero-action product pages (based on Finding 3)
+6,189 items sit above the 95th percentile for views but remain below the 2.68% conversion baseline. The problem is not traffic — these items are being seen and rejected. Conduct a product page audit starting with items that have zero cart additions despite 1,000+ views, investigating page clarity, pricing visibility, image quality, and trust signals.
 
 ---
 
