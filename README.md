@@ -140,10 +140,8 @@ print(len(missing_ids), sorted(missing_ids))
 top_9_ids = [29100, 156173, 184998, 229204, 244924, 260650, 287664, 298196, 449571]
 ```
 
-## Project Links
+## Kaggle Notebook
 
-- GitHub Repository: [RetailRocket Funnel Analysis](https://github.com/Roshan-1510/retailrocket-funnel-analysis)
 - Kaggle Notebook: [RetailRocket Funnel Analysis Notebook](https://www.kaggle.com/code/roshanvishwakarma15/retailrocket-funnel-analysis)
-- Dataset: [RetailRocket E-Commerce Dataset](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset)
 
 ---
