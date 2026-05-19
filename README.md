@@ -47,14 +47,18 @@ The investigation started by counting unique users at each funnel stage to locat
 **Conversion Funnel**
 ![Conversion Funnel](images/Conversion_Funnel.png)
 
+
 **Views vs Conversion Rate**
 ![Views vs Conversion](images/ViewVsConversion.png)
+
 
 **Cart Rate Distribution**
 ![Cart Rate Distribution](images/CartRateDistribution.png)
 
+
 **Category Conversion Rates**
 ![Category Conversion Rates](images/CategoryConversionRate.png)
+
 
 **Top Viewed Items**
 ![Top Viewed Items](images/Top_item_view.png)
