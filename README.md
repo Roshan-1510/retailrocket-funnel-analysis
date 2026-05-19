@@ -2,13 +2,13 @@
 
 ## Headline
 
-"6,189 products across 21 categories are generating views with near-zero cart additions — traffic isn't the issue, the product page is."
+> **6,189 products across 21 categories are generating views with near-zero cart additions — traffic isn't the issue, the product page is.**
 
 ---
 
 ## Business Context
 
-RetailRocket is a retention management platform that provides conversion strategies for e-commerce businesses. The dataset covers 1,404,179 unique users, of whom only 2.68% add a product to cart. A 1% improvement in that rate would bring 13,951 additional users into the purchase funnel.
+RetailRocket is a retention management platform that provides conversion strategies for e-commerce businesses. The dataset covers **1,404,179 unique users**, of whom only **2.68%** add a product to cart. A 1% improvement in that rate would bring **13,951 additional users** into the purchase funnel.
 
 ---
 
@@ -20,23 +20,22 @@ The investigation started by counting unique users at each funnel stage to locat
 
 ## Findings
 
-**Finding 1:** 1,404,179 unique viewers, 37,722 unique addtocart users, and 11,791 unique transactions across the dataset.
-
-**Finding 2:** View-to-addtocart conversion sits at 2.68%. Addtocart-to-transaction conversion is 31.25% — the checkout stage is not the problem.
-
-**Finding 3:** 6,189 items sit above the 95th percentile view threshold with near-zero addtocart rates. These items are the primary source of conversion loss.
-
-**Finding 4:** 9 items from the top 50 shortlist have no metadata in the item properties dataset — no category, no attributes — yet continue to generate views.
+| # | Finding |
+|---|---------|
+| 1 | **1,404,179** unique viewers, **37,722** unique addtocart users, and **11,791** unique transactions across the dataset. |
+| 2 | View-to-addtocart conversion sits at **2.68%**. Addtocart-to-transaction conversion is **31.25%** — the checkout stage is not the problem. |
+| 3 | **6,189 items** sit above the 95th percentile view threshold with near-zero addtocart rates. These items are the primary source of conversion loss. |
+| 4 | **9 items** from the top 50 shortlist have no metadata in the item properties dataset — no category, no attributes — yet continue to generate views. |
 
 ---
 
 ## Recommendations
 
-**Recommendation 1** — Fix metadata gaps first (based on Finding 4)
+**Recommendation 1 — Fix metadata gaps first** *(based on Finding 4)*
 
-9 items in the top-50 highest-view list have no metadata — no category, no attributes, no product information. These items average 466 views each but convert at zero. Conduct a metadata audit across the full 6,189 item shortlist, prioritizing these 9 items first. Fixing them alone could recover an estimated 112 additional cart additions at the current 2.68% baseline.
+9 items in the top-50 highest-view list have no metadata — no category, no attributes, no product information. These items average 466 views each but convert at zero. Conduct a metadata audit across the full 6,189 item shortlist, prioritizing these 9 items first. Fixing them alone could recover an estimated **112 additional cart additions** at the current 2.68% baseline.
 
-**Recommendation 2** — Audit high-view, zero-action product pages (based on Finding 3)
+**Recommendation 2 — Audit high-view, zero-action product pages** *(based on Finding 3)*
 
 6,189 items sit above the 95th percentile for views but remain below the 2.68% conversion baseline. The problem is not traffic — these items are being seen and rejected. Conduct a product page audit starting with items that have zero cart additions despite 1,000+ views, investigating page clarity, pricing visibility, image quality, and trust signals.
 
@@ -44,34 +43,30 @@ The investigation started by counting unique users at each funnel stage to locat
 
 ## Visualizations
 
-**Conversion Funnel**
-![Conversion Funnel](images/Conversion_Funnel.png)
-
-
-**Views vs Conversion Rate**
-![Views vs Conversion](images/ViewVsConversion.png)
-
-
-**Cart Rate Distribution**
-![Cart Rate Distribution](images/CartRateDistribution.png)
-
-
-**Category Conversion Rates**
-![Category Conversion Rates](images/CategoryConversionRate.png)
-
-
-**Top Viewed Items**
-![Top Viewed Items](images/Top_item_view.png)
+<table>
+  <tr>
+    <td align="center"><strong>Conversion Funnel</strong><br><img src="images/Conversion_Funnel.png" width="400"/></td>
+    <td align="center"><strong>Views vs Conversion Rate</strong><br><img src="images/ViewVsConversion.png" width="400"/></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Cart Rate Distribution</strong><br><img src="images/CartRateDistribution.png" width="400"/></td>
+    <td align="center"><strong>Category Conversion Rates</strong><br><img src="images/CategoryConversionRate.png" width="400"/></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2"><strong>Top Viewed Items</strong><br><img src="images/Top_item_view.png" width="500"/></td>
+  </tr>
+</table>
 
 ---
 
 ## Technical Proof
 
-**Dataset:** [RetailRocket E-Commerce Dataset](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset)
+**Dataset:** [RetailRocket E-Commerce Dataset](https://www.kaggle.com/datasets/retailrocket/ecommerce-dataset)  
+**Notebook:** [RetailRocket Funnel Analysis — Kaggle](https://www.kaggle.com/code/roshanvishwakarma15/retailrocket-funnel-analysis)
 
 ---
 
-**Business question:** How many unique users exist at each funnel stage?
+### Business question: How many unique users exist at each funnel stage?
 
 ```sql
 SELECT COUNT(DISTINCT visitorid) AS Number_of_users,
@@ -83,7 +78,7 @@ FROM events;
 
 ---
 
-**Business question:** What is the 95th percentile view threshold for identifying high-view products?
+### Business question: What is the 95th percentile view threshold for identifying high-view products?
 
 ```sql
 WITH view_per_item AS (
@@ -105,7 +100,7 @@ WHERE rn = FLOOR(total * 0.95);
 
 ---
 
-**Business question:** Which items have high views but near-zero addtocart, ranked by missed opportunity?
+### Business question: Which items have high views but near-zero addtocart, ranked by missed opportunity?
 
 ```sql
 WITH view_per_item AS (
@@ -132,7 +127,7 @@ ORDER BY miss_addtocart DESC, v.count_view DESC;
 
 ---
 
-**Business question:** Which items in the top 50 shortlist are missing metadata entirely?
+### Business question: Which items in the top 50 shortlist are missing metadata entirely?
 
 ```python
 result_ids = set(df_latest['itemid'])
@@ -143,9 +138,3 @@ print(len(missing_ids), sorted(missing_ids))
 # 9 items confirmed missing:
 top_9_ids = [29100, 156173, 184998, 229204, 244924, 260650, 287664, 298196, 449571]
 ```
-
-## Kaggle Notebook
-
-- Kaggle Notebook: [RetailRocket Funnel Analysis Notebook](https://www.kaggle.com/code/roshanvishwakarma15/retailrocket-funnel-analysis)
-
----
